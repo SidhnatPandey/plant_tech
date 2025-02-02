@@ -24,7 +24,10 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             className="flex-shrink-0 font-bold text-2xl text-indigo-600"
           >
-            PlantTech Innovation
+            <div style={{display: 'flex', alignItems: 'center'}}>
+              {/* <img src='src/assets/15-without.png' style={{width: '4rem'}} /> */}
+              PlantTech Innovation
+            </div>
           </motion.div>
 
           {/* Desktop Navigation */}

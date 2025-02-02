@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Target, TrendingUp } from 'lucide-react';
 
@@ -26,7 +25,7 @@ const About = () => {
               transition={{ delay: 0.2 }}
             >
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
+                src="src/assets/Plantech innovation.png"
                 alt="Team collaboration"
                 className="rounded-lg shadow-lg"
               />

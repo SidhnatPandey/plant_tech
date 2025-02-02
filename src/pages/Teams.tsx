@@ -1,47 +1,46 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail } from 'lucide-react';
 
 const Teams = () => {
   const team = [
     {
-      name: 'John Doe',
+      name: 'Himanshi Kushwaha',
       role: 'CEO & Founder',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80',
+      image: "src/assets/founder.png",
       socials: {
-        linkedin: '#',
+        linkedin: 'https://www.linkedin.com/in/himanshi-kushwaha/',
         github: '#',
-        email: 'john@example.com',
+        email: '2008himanshi@gmail.com',
       },
     },
     {
-      name: 'Jane Smith',
-      role: 'CTO',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80',
+      name: 'Alok Pandey',
+      role: 'Mentor',
+      image: 'src/assets/mentor.png',
       socials: {
-        linkedin: '#',
+        linkedin: 'https://www.linkedin.com/in/alokpandeyentrepreneur/',
         github: '#',
-        email: 'jane@example.com',
+        email: 'iteche@rediffmail.com',
       },
     },
     {
-      name: 'Mike Johnson',
-      role: 'Lead Developer',
-      image: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&q=80',
+      name: 'Harshit Sengar',
+      role: 'Product Development Lead',
+      image: 'src/assets/developer.png',
       socials: {
-        linkedin: '#',
-        github: '#',
-        email: 'mike@example.com',
+        linkedin: 'https://www.linkedin.com/in/harshitsengar/',
+        github: 'https://github.com/Hrshitsngr',
+        email: 'harshitsengar8545@gmail.com',
       },
     },
     {
-      name: 'Sarah Wilson',
-      role: 'Design Lead',
+      name: 'Devendra',
+      role: 'R & D Lead',
       image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80',
       socials: {
         linkedin: '#',
         github: '#',
-        email: 'sarah@example.com',
+        email: 'devendra@example.com',
       },
     },
   ];
