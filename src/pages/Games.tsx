@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { GamepadIcon, Star, Download, Users } from 'lucide-react';
 

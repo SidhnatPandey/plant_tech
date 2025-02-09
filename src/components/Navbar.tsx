@@ -26,7 +26,7 @@ const Navbar = () => {
           >
             <div style={{display: 'flex', alignItems: 'center'}}>
               {/* <img src='src/assets/15-without.png' style={{width: '4rem'}} /> */}
-              PlantTech Innovation
+              PlanTech Innovation
             </div>
           </motion.div>
 

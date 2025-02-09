@@ -1,8 +1,11 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Rocket, Shield, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -30,6 +33,7 @@ const Home = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold flex items-center mx-auto"
+            onClick={() => navigate("/about")}
           >
             Get Started
             <ArrowRight className="ml-2" />
