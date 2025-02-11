@@ -42,7 +42,7 @@ const CanvasGame = () => {
     const context = canvas.getContext('2d');
     if (!context) return;
 
-    canvas.width = 800;
+    canvas.width = 1200;
     canvas.height = 600;
 
     // Set initial background
