@@ -6,7 +6,7 @@ const Teams = () => {
     {
       name: 'Himanshi Kushwaha',
       role: 'CEO & Founder',
-      image: "src/assets/founder.png",
+      image: "https://res.cloudinary.com/dgwnivpsz/image/upload/v1741418952/founder_qjkobi.png",
       socials: {
         linkedin: 'https://www.linkedin.com/in/himanshi-kushwaha/',
         github: '#',
@@ -16,7 +16,7 @@ const Teams = () => {
     {
       name: 'Alok Pandey',
       role: 'Mentor',
-      image: 'src/assets/mentor.png',
+      image: 'https://res.cloudinary.com/dgwnivpsz/image/upload/v1741418953/mentor_jge1f6.png',
       socials: {
         linkedin: 'https://www.linkedin.com/in/alokpandeyentrepreneur/',
         github: '#',
@@ -26,7 +26,7 @@ const Teams = () => {
     {
       name: 'Harshit Sengar',
       role: 'Product Development Lead',
-      image: 'src/assets/developer.png',
+      image: 'https://res.cloudinary.com/dgwnivpsz/image/upload/v1741418953/developer_qy4k1f.png',
       socials: {
         linkedin: 'https://www.linkedin.com/in/harshitsengar/',
         github: 'https://github.com/Hrshitsngr',

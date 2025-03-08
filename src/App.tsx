@@ -6,6 +6,7 @@ import Teams from './pages/Teams';
 import Contact from './pages/Contact';
 import Products from './pages/Products';
 import Games from './pages/Games';
+import Achievements from './pages/Achievements';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/products" element={<Products />} />
           <Route path="/games" element={<Games />} />
+          <Route path="/achievements" element={<Achievements />} />
         </Routes>
       </div>
     </Router>

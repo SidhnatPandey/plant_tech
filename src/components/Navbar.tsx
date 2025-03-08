@@ -11,6 +11,7 @@ const Navbar = () => {
     { to: '/about', label: 'About' },
     { to: '/teams', label: 'Teams' },
     { to: '/products', label: 'Products' },
+    {to: '/achievements', label: 'Milestones'},
     { to: '/games', label: 'Games' },
     { to: '/contact', label: 'Contact' },
   ];
@@ -26,7 +27,7 @@ const Navbar = () => {
           >
             <div style={{display: 'flex', alignItems: 'center'}}>
               {/* <img src='src/assets/15-without.png' style={{width: '4rem'}} /> */}
-              PlanTech Innovation
+              PlanTech Innovations
             </div>
           </motion.div>
 

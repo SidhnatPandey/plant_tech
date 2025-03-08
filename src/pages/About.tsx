@@ -25,7 +25,7 @@ const About = () => {
               transition={{ delay: 0.2 }}
             >
               <img
-                src="src/assets/Plantech innovation.png"
+                src="https://res.cloudinary.com/dgwnivpsz/image/upload/v1741418954/Plantech_innovation_vo6z7o.png"
                 alt="Team collaboration"
                 className="rounded-lg shadow-lg"
               />
