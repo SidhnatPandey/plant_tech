@@ -10,7 +10,7 @@ import Achievements from './pages/Achievements';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <div className="min-h-screen bg-gray-50">
         <Navbar />
         <Routes>
