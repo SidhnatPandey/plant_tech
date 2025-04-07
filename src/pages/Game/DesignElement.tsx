@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Draggable from 'react-draggable';
 import { DesignElement as DesignElementType } from '../../constant/types';
 import { Trash2 } from 'lucide-react';
@@ -15,7 +15,112 @@ export const DesignElement: React.FC<Props> = ({ element, onUpdate, onDelete }) 
   const [resizeStartPosition, setResizeStartPosition] = useState({ x: 0, y: 0 });
   const [resizeHandle, setResizeHandle] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (isResizing) {
+      const handleMouseMove = (e: MouseEvent) => {
+        if (!resizeHandle) return;
+
+        e.preventDefault();
+        const deltaX = e.clientX - resizeStartPosition.x;
+        const deltaY = e.clientY - resizeStartPosition.y;
+
+        let newWidth = resizeStartDimensions.width;
+        let newHeight = resizeStartDimensions.height;
+
+        // Maintain aspect ratio if shift is pressed
+        const aspectRatio = resizeStartDimensions.width / resizeStartDimensions.height;
+        const keepAspectRatio = e.shiftKey;
+
+        switch (resizeHandle) {
+          case 'e':
+            newWidth = resizeStartDimensions.width + deltaX;
+            if (keepAspectRatio) newHeight = newWidth / aspectRatio;
+            break;
+          case 'w':
+            newWidth = resizeStartDimensions.width - deltaX;
+            if (keepAspectRatio) newHeight = newWidth / aspectRatio;
+            break;
+          case 's':
+            newHeight = resizeStartDimensions.height + deltaY;
+            if (keepAspectRatio) newWidth = newHeight * aspectRatio;
+            break;
+          case 'n':
+            newHeight = resizeStartDimensions.height - deltaY;
+            if (keepAspectRatio) newWidth = newHeight * aspectRatio;
+            break;
+          case 'se':
+            newWidth = resizeStartDimensions.width + deltaX;
+            newHeight = resizeStartDimensions.height + deltaY;
+            if (keepAspectRatio) {
+              if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                newHeight = newWidth / aspectRatio;
+              } else {
+                newWidth = newHeight * aspectRatio;
+              }
+            }
+            break;
+          case 'sw':
+            newWidth = resizeStartDimensions.width - deltaX;
+            newHeight = resizeStartDimensions.height + deltaY;
+            if (keepAspectRatio) {
+              if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                newHeight = newWidth / aspectRatio;
+              } else {
+                newWidth = newHeight * aspectRatio;
+              }
+            }
+            break;
+          case 'ne':
+            newWidth = resizeStartDimensions.width + deltaX;
+            newHeight = resizeStartDimensions.height - deltaY;
+            if (keepAspectRatio) {
+              if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                newHeight = newWidth / aspectRatio;
+              } else {
+                newWidth = newHeight * aspectRatio;
+              }
+            }
+            break;
+          case 'nw':
+            newWidth = resizeStartDimensions.width - deltaX;
+            newHeight = resizeStartDimensions.height - deltaY;
+            if (keepAspectRatio) {
+              if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                newHeight = newWidth / aspectRatio;
+              } else {
+                newWidth = newHeight * aspectRatio;
+              }
+            }
+            break;
+        }
+
+        // Ensure minimum dimensions
+        newWidth = Math.max(50, newWidth);
+        newHeight = Math.max(50, newHeight);
+
+        // Use requestAnimationFrame for smooth updates
+        requestAnimationFrame(() => {
+          onUpdate(element.id, { width: newWidth, height: newHeight });
+        });
+      };
+
+      const handleMouseUp = () => {
+        setIsResizing(false);
+        setResizeHandle(null);
+      };
+
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mouseup', handleMouseUp);
+      };
+    }
+  }, [isResizing, resizeHandle, resizeStartPosition, resizeStartDimensions, element.id, onUpdate]);
+
   const handleResizeStart = (e: React.MouseEvent, handle: string) => {
+    e.preventDefault();
     e.stopPropagation();
     setIsResizing(true);
     setResizeHandle(handle);
@@ -23,97 +128,10 @@ export const DesignElement: React.FC<Props> = ({ element, onUpdate, onDelete }) 
     setResizeStartPosition({ x: e.clientX, y: e.clientY });
   };
 
-  const handleResizeMove = (e: React.MouseEvent) => {
-    if (!isResizing || !resizeHandle) return;
-
-    e.stopPropagation();
-    const deltaX = e.clientX - resizeStartPosition.x;
-    const deltaY = e.clientY - resizeStartPosition.y;
-
-    let newWidth = resizeStartDimensions.width;
-    let newHeight = resizeStartDimensions.height;
-
-    // Maintain aspect ratio if shift is pressed
-    const aspectRatio = resizeStartDimensions.width / resizeStartDimensions.height;
-    const keepAspectRatio = e.shiftKey;
-
-    switch (resizeHandle) {
-      case 'e':
-        newWidth = resizeStartDimensions.width + deltaX;
-        if (keepAspectRatio) newHeight = newWidth / aspectRatio;
-        break;
-      case 'w':
-        newWidth = resizeStartDimensions.width - deltaX;
-        if (keepAspectRatio) newHeight = newWidth / aspectRatio;
-        break;
-      case 's':
-        newHeight = resizeStartDimensions.height + deltaY;
-        if (keepAspectRatio) newWidth = newHeight * aspectRatio;
-        break;
-      case 'n':
-        newHeight = resizeStartDimensions.height - deltaY;
-        if (keepAspectRatio) newWidth = newHeight * aspectRatio;
-        break;
-      case 'se':
-        newWidth = resizeStartDimensions.width + deltaX;
-        newHeight = resizeStartDimensions.height + deltaY;
-        if (keepAspectRatio) {
-          if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            newHeight = newWidth / aspectRatio;
-          } else {
-            newWidth = newHeight * aspectRatio;
-          }
-        }
-        break;
-      case 'sw':
-        newWidth = resizeStartDimensions.width - deltaX;
-        newHeight = resizeStartDimensions.height + deltaY;
-        if (keepAspectRatio) {
-          if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            newHeight = newWidth / aspectRatio;
-          } else {
-            newWidth = newHeight * aspectRatio;
-          }
-        }
-        break;
-      case 'ne':
-        newWidth = resizeStartDimensions.width + deltaX;
-        newHeight = resizeStartDimensions.height - deltaY;
-        if (keepAspectRatio) {
-          if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            newHeight = newWidth / aspectRatio;
-          } else {
-            newWidth = newHeight * aspectRatio;
-          }
-        }
-        break;
-      case 'nw':
-        newWidth = resizeStartDimensions.width - deltaX;
-        newHeight = resizeStartDimensions.height - deltaY;
-        if (keepAspectRatio) {
-          if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            newHeight = newWidth / aspectRatio;
-          } else {
-            newWidth = newHeight * aspectRatio;
-          }
-        }
-        break;
-    }
-
-    // Ensure minimum dimensions
-    newWidth = Math.max(50, newWidth);
-    newHeight = Math.max(50, newHeight);
-
-    onUpdate(element.id, { width: newWidth, height: newHeight });
-  };
-
-  const handleResizeEnd = () => {
-    setIsResizing(false);
-    setResizeHandle(null);
-  };
-
   const handleDrag = (_e: any, position: { x: number; y: number }) => {
-    onUpdate(element.id, { x: position.x, y: position.y });
+    requestAnimationFrame(() => {
+      onUpdate(element.id, { x: position.x, y: position.y });
+    });
   };
 
   const handleClick = (e: React.MouseEvent) => {
@@ -133,10 +151,9 @@ export const DesignElement: React.FC<Props> = ({ element, onUpdate, onDelete }) 
         style={{
           width: element.width,
           height: element.height,
+          touchAction: 'none',
+          userSelect: 'none',
         }}
-        onMouseMove={handleResizeMove}
-        onMouseUp={handleResizeEnd}
-        onMouseLeave={handleResizeEnd}
         onClick={handleClick}
       >
         <img
@@ -144,6 +161,7 @@ export const DesignElement: React.FC<Props> = ({ element, onUpdate, onDelete }) 
           alt="design element"
           className="w-full h-full object-contain"
           draggable={false}
+          style={{ pointerEvents: 'none' }}
         />
         
         {/* Delete button */}
@@ -160,7 +178,11 @@ export const DesignElement: React.FC<Props> = ({ element, onUpdate, onDelete }) 
         )}
         
         {/* Resize handles */}
-        <div className={`absolute inset-0 border-2 ${element.isSelected ? 'border-blue-500' : 'border-transparent group-hover:border-blue-500'}`}>
+        <div 
+          className={`absolute inset-0 border-2 ${
+            element.isSelected ? 'border-blue-500' : 'border-transparent group-hover:border-blue-500'
+          }`}
+        >
           {/* Corner handles */}
           <div
             className="absolute top-0 left-0 w-3 h-3 bg-white border-2 border-blue-500 rounded-full cursor-nw-resize -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100"
