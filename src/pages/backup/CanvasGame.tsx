@@ -320,7 +320,7 @@ const CanvasGame = () => {
     reader.readAsDataURL(file);
   };
 
-  const handleDoubleClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleDoubleClick = (_e: React.MouseEvent<HTMLCanvasElement>) => {
     if (!selectedElement || selectedElement.type !== 'text') return;
 
     const newText = prompt('Enter text:', selectedElement.text);
