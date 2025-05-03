@@ -68,7 +68,7 @@ const About = () => {
                     whileHover={{ scale: 1.05 }}
                     className="text-center p-4 bg-gray-50 rounded-lg"
                   >
-                    <div className="text-indigo-600 flex justify-center mb-2">
+                    <div className="text-green-600 flex justify-center mb-2">
                       {stat.icon}
                     </div>
                     <p className="text-sm font-semibold">{stat.label}</p>

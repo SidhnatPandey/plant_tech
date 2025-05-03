@@ -231,10 +231,9 @@
 // };
 
 // export default Contact;
-
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -274,18 +273,18 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen pt-16">
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">Get in Touch</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
               Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12">
             {/* Form Submission */}
-            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="bg-gray-50 p-8 rounded-xl">
+            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="bg-white p-8 rounded-xl shadow">
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -297,7 +296,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#18995d] focus:border-[#18995d]"
                   />
                 </div>
                 <div>
@@ -310,7 +309,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#18995d] focus:border-[#18995d]"
                   />
                 </div>
                 <div>
@@ -323,7 +322,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#18995d] focus:border-[#18995d]"
                   ></textarea>
                 </div>
                 <motion.button
@@ -331,11 +330,11 @@ const Contact = () => {
                   whileTap={{ scale: 0.95 }}
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors"
+                  className="w-full bg-[#18995d] text-white py-2 px-4 rounded-md hover:bg-[#157f4d] transition-colors"
                 >
                   {loading ? "Sending..." : "Send Message"}
                 </motion.button>
-                {status && <p className="text-center text-sm mt-2">{status}</p>}
+                {status && <p className="text-center text-sm mt-2 text-gray-700">{status}</p>}
               </form>
             </motion.div>
 
@@ -343,40 +342,26 @@ const Contact = () => {
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }} className="space-y-8">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-indigo-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900">Address</h3>
-                  <p className="mt-1 text-gray-600">
-                    123 Innovation Street
-                    <br />
-                    Tech City, TC 12345
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <Phone className="w-6 h-6 text-indigo-600" />
+                  <Phone className="w-6 h-6 text-[#18995d]" />
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-gray-900">Phone</h3>
-                  <p className="mt-1 text-gray-600">+1 (555) 123-4567</p>
+                  <p className="mt-1 text-gray-700">+91 8090167117</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <Mail className="w-6 h-6 text-indigo-600" />
+                  <Mail className="w-6 h-6 text-[#18995d]" />
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-gray-900">Email</h3>
-                  <p className="mt-1 text-gray-600">contact@company.com</p>
+                  <p className="mt-1 text-gray-700">plantechinn@gmail.com</p>
                 </div>
               </div>
 
               <div className="mt-8">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" alt="Office" className="w-full h-64 object-cover rounded-lg" />
+                <img src="src/assets/contact.png" alt="Office" className="w-full h-64 object-cover rounded-lg" />
               </div>
             </motion.div>
           </div>
@@ -387,4 +372,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
