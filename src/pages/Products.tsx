@@ -88,7 +88,7 @@ const Products = () => {
                     alt={product.name}
                     className="w-full h-48 object-cover"
                   />
-                  <div className="absolute top-4 right-4 bg-[#ffde59] rounded-full p-2">
+                  <div className="absolute top-0 right-0 bg-[#ffde59] rounded-full p-2">
                     <Star className="w-4 h-4 text-white" />
                   </div>
                 </div>

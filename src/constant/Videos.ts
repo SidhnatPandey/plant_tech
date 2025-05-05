@@ -1,0 +1,1 @@
+export const vedios = ["https://youtu.be/Qm4nXrGDJ8U", "https://youtu.be/YeUgGxC8Lss", "https://youtu.be/Zo4Wa8Iv8y0", "https://youtu.be/L3UPTmDczx8", "https://youtu.be/5wI-4CE_ff4"];

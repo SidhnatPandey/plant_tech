@@ -71,17 +71,33 @@ const Achievements = () => {
 
   const newspaperCuttings = [
     {
-      image: "https://res.cloudinary.com/dgwnivpsz/image/upload/v1741421000/11_d38rft.png",
+      image: "src/assets/Newspaper snippets/1.png",
       description: "Some description",
     },
     {
-      image: "https://res.cloudinary.com/dgwnivpsz/image/upload/v1741420879/1_mnpnak.png",
+      image: "src/assets/Newspaper snippets/2.png",
       description: "Some description",
     },
     {
-      image: "https://res.cloudinary.com/dgwnivpsz/image/upload/v1741420878/2_vhlxew.png",
+      image: "src/assets/Newspaper snippets/3.png",
       description: "Some description",
     },
+    {
+      image: "src/assets/Newspaper snippets/4.png",
+      description: "Some description",
+    },
+    {
+      image: "src/assets/Newspaper snippets/5.png",
+      description: "Some description",
+    },
+    {
+      image: "src/assets/Newspaper snippets/6.png",
+      description: "Some description",
+    },
+    {
+      image: "src/assets/Newspaper snippets/7.png",
+      description: "Some description",
+    }
   ];
 
   const [current, setCurrent] = useState(0);
@@ -125,7 +141,7 @@ const Achievements = () => {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -300 * direction, opacity: 0 }}
               transition={{ x: { type: "spring", stiffness: 300, damping: 30 }, opacity: { duration: 0.2 } }}
-              className="absolute top-0 left-0 w-full h-full object-cover"
+              className="absolute top-0 left-0 w-full h-full object-contain bg-white"
             />
           </AnimatePresence>
         </div>
