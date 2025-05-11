@@ -29,7 +29,7 @@ const Navbar = () => {
             style={{ color: '#18995d' }}
           >
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img src='src/assets/15-without.png' style={{width: '4rem'}} />
+              <img src='https://res.cloudinary.com/dgwnivpsz/image/upload/v1741418952/15-without_zn6yo2.png' style={{width: '4rem'}} />
               PlanTech Innovations
             </div>
           </motion.div>
