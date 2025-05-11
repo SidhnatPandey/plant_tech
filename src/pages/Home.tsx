@@ -24,7 +24,7 @@ const Home = () => {
           className="relative max-w-4xl mx-auto text-center px-4"
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Innovation Meets Excellence
+            Style With Sustainability
           </h1>
           <p className="text-xl md:text-2xl mb-8">
             Transforming ideas into reality with cutting-edge solutions
@@ -42,7 +42,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-50">
+      {/* <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -96,7 +96,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
